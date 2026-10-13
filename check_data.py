@@ -28,6 +28,6 @@ for city in cities:
         if rain_days is not None:
             assert float(row['rain_days_ge_1mm']) == rain_days
         else:
-            assert row['rain_days_ge_1mm'] == 'None'
+            assert row['rain_days_ge_1mm'] == ''
         assert row['source_family'] == ('IPMA' if city['country'] == 'Portugal' else 'WMO_NCEI_min24')
 print('PASS: 90 cities, 23 countries, 1080 monthly rows; CSV and JSON agree.')
