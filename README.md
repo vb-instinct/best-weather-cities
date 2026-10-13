@@ -32,7 +32,7 @@ This is a curated shortlist, not every city in the world or in each country. A m
 | [index.html](index.html) | Interactive, mobile-first atlas. Country, month and preference controls; full monthly values and source links. |
 | [METHODOLOGY.md](METHODOLOGY.md) | Thresholds, tie-breaks, sampling limits, station proxies, exclusions and update process. |
 | [SOURCES.md](SOURCES.md) | Exact sources, claims used, retrieval date and source-file hashes. |
-| [cities-monthly.csv](cities-monthly.csv) | 1,080 station-month records, labelled in C and mm, with station IDs and source links. |
+| [cities-monthly.csv](cities-monthly.csv) | 1,080 station-month records, labelled in C and mm, with station IDs and source-family keys (exact links in JSON and source ledger). |
 | [cities.json](cities.json) | Structured city records and all monthly arrays used by the page. |
 | [QUALITY.md](QUALITY.md) | Data and interface checks, remaining limitations and upgrade priorities. |
 
