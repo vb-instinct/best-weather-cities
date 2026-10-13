@@ -113,3 +113,28 @@ https://www.ipma.pt/bin/file.data/climate-normal/cn_91-20_PORTO_PEDRAS_RUBRAS.pd
 ## Exclusions
 
 Incomplete core series: Guanajuato, Naples, Catania, Caxias do Sul, Musanze/Ruhengeri. Guatemala station/value anomalies withheld pending national-source reconciliation. Suspect source geolocation fields not used. No missing data imputed. See methodology.
+
+## Map edition supplement, retrieved 14 October 2026
+
+NASA POWER climatology API and custom-period syntax:
+https://power.larc.nasa.gov/docs/services/api/temporal/climatology/
+
+NASA POWER meteorological methodology (MERRA-2, grid resolution, observation assimilation and heights):
+https://power.larc.nasa.gov/docs/methodology/meteorology/
+
+NASA POWER API tutorial (resolution and at most five concurrent requests):
+https://power.larc.nasa.gov/docs/tutorials/service-data-request/api/
+
+GeoNames city locations via Open-Meteo geocoding, country and feature-code definitions:
+https://open-meteo.com/en/docs/geocoding-api
+
+Natural Earth public-domain use terms:
+https://www.naturalearthdata.com/about/terms-of-use/
+
+Natural Earth countries 1:110m and boundary caveats:
+https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/
+
+Downloaded GeoJSON source, compiled into the page's map paths:
+https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson
+
+Every city's exact NASA API URL and GeoNames/Open-Meteo query URL is in cities.json and the CSV. The NASA response SHA-256 and custom 1991-2020 period are also in JSON. The wind/humidity numbers are model-derived, not a new set of national-service station normals. Core station-source dates and hashes above are unchanged.
