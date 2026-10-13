@@ -18,7 +18,7 @@
 - The page was rendered at 320, 390 and 1280 pixels.
 - Long city and station labels, month chips, units and caveats wrap inside the mobile width.
 - Country filter, city search, month selection, all preference buttons, reset and empty-state behaviour were exercised.
-- Monthly disclosures contain the actual data; charts use the same 0-40 C scale for every city and exact values are printed below.
+- Monthly disclosures contain the actual data; charts use the same -5 to 40 C scale for every city and exact values are printed below.
 - Every city record remains in the HTML even without JavaScript; source links and downloadable CSV/JSON remain available. Dynamic fit summaries require JavaScript.
 - No external scripts, stylesheets, fonts, tracking or runtime API requests. The page works offline once downloaded.
 
