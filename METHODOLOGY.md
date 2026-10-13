@@ -1,46 +1,47 @@
 # How this atlas works
 
-Research checked 13 October 2026. Climate baseline: 1991-2020 throughout.
+Map edition, checked 14 October 2026. All climate inputs cover 1991-2020.
 
-## What the ranking means
+## Your default comfort rule
 
-This is a curated comparison of 90 city/station candidates in 23 countries, not an exhaustive survey of all cities or all countries. Rank means "best match among the cities included in this country under the selected rule". It is neither a worldwide league table nor a quality-of-life score. Equal month counts are broken by the number of temperature-fit months, then lower annual precipitation, then city name. Tiny score differences are not meaningful evidence of superiority.
+A month passes when its **average daily high is 18-28 C**, model-derived mean wind at 10 m is **at most 3 m/s**, model-derived relative humidity at 2 m is **at most 60%**, and precipitation is **20-100 mm/month**. The wind, humidity and rain limits are editable. A second temperature setting requires both average low and average high to fall within 18-28 C. The default interprets 18-28 C as daytime weather, not warm nights; the low is always shown.
 
-The default **mild + drier** rule counts a month when its average daily high is 18-28 C, its average daily low is 8-20 C, and its average monthly precipitation is at most 100 mm. The **mild temperature** rule removes the rain limit. The **warmer** rule uses average highs of 22-32 C, lows of 12-24 C, and precipitation at most 150 mm. These thresholds are editorial preferences, not medical safety limits, tourism standards, daily comfort probabilities or an established scientific index. Change the rule: the ranking can change sharply.
+These are starting preferences, not a scientific comfort index, medical limits or proof of no wind. Literal zero wind year-round is not realistic as a climate promise. Relative humidity changes with temperature and does not replace dew point or heat stress. A rain lower bound distinguishes moderate rainfall from an arid climate; set it to zero if dry is preferable.
 
-Why use simple rules? A visible rule can be challenged. An unexplained weighted "perfect climate" score cannot. No claim is made that 101 mm is uncomfortable and 99 mm is comfortable. Month counts are screening indicators. Use the actual monthly values and rain days for the decision.
+**Year-round fit requires all 12 monthly averages to pass every selected limit.** A high fit score alone is not a year-round match. Monthly averages cannot establish how many individual days are comfortable or capture gusts, hot afternoons or heavy storms.
 
-## Sources and selection
+## Map colors and scoring
 
-The 85 non-Portuguese station records are extracted from national meteorological-service submissions to the WMO, hosted in NOAA NCEI's 1991-2020 min24 composite files. The files contain values based on at least 24 years of reported observations; where a year count is not provided, the archive assumes 30. The source parameter files are TMAX (mean daily maximum, C), TMIN (mean daily minimum, C), PRCP (precipitation amount, mm), and DP01 (days with at least 1 mm precipitation). Missing values are not zeros.
+For comfort mode, each of four components gets 100 within its selected range. Outside the range, deduct 100 times distance from the nearest limit divided by: 15 C for temperature, 150 mm for rainfall, 40 percentage points for humidity, 5 m/s for wind. Clip each component to 0-100. The monthly fit score is the equal-weight mean of the four. In low-and-high temperature mode, the temperature component is the lower of the high and low scores.
 
-Five Portuguese records come directly from IPMA's 1991-2020 station normals, version 1.0 of 2024: Funchal, Faro, Lisbon Instituto Geofisico, Porto Pedras Rubras and Ponta Delgada Observatorio Afonso Chaves. These use the same climate period, but their source and station identifiers remain separate from the WMO composite.
+Year view averages the 12 monthly scores. Month view uses that month's score. Colors: 90-100 dark green, 75-89 green, 50-74 tan, under 50 grey. A missing wind or humidity month makes the comfort score unavailable for that month; any such month makes the year score unavailable. Missing values are never calm, dry or zero. Color cutoffs, weights and penalty scales are editorial. Tiny differences are not evidence of superiority.
 
-Candidate selection began with the supplied 2016 SMH travel article, then expanded to coastal, highland and seasonal alternatives across regions. Data access and complete monthly series also shaped coverage. It is not a representative statistical sample. Countries absent from the atlas are not judged to have bad weather. Ecuador and Namibia, both discussed by the article, are not quantitatively ranked here because comparable verified 1991-2020 station series were not obtained in this run.
+Within-country ranks sort by selected-month pass first (if selected), then fit-month count, then fit score, temperature-fit count, lower annual precipitation and name. Ranking is among this country's included candidates, not every city. There is no national or worldwide champion claim.
 
-Only candidates with complete 12-month high, low and precipitation arrays are ranked. Five candidates were excluded for incomplete core data: Guanajuato, Naples, Catania, Caxias do Sul and Musanze/Ruhengeri. Guatemala candidates were withheld after the composite returned implausible station/value combinations requiring reconciliation with the national source. They were not silently corrected. Some source geolocation fields also looked suspect (notably Auckland); no maps or coordinate-based interpretations are generated. The month arrays are used as published, with uncertainty kept visible.
+Legacy modes remain: mild + drier (high 18-28 C, low 8-20 C, rain ≤100 mm); mild temperature (same temperatures, no rain limit); warmer (high 22-32 C, low 12-24 C, rain ≤150 mm). In these modes wind/humidity are displayed but deliberately not scored, and map score is the share of rule-fit months times 100 (or a pass/fail 100/0 for one month).
 
-## Stations are not cities
+## Temperature and rain: station observations
 
-A single station is a proxy. Airports can be warmer, cooler, drier, windier or higher than where a visitor will stay. Gran Canaria airport is on a different coast from Las Palmas: that row is an island-coastal lead, not a direct Las Palmas city normal. San Francisco airport is south of the city. Rome's Fiumicino airport is coastal, not central Rome. Medellin uses Olaya Herrera in the valley, not the higher airport near Rionegro. The exact original station name and identifier are visible in every record and in the downloadable CSV.
+85 records use national meteorological-service WMO submissions hosted by NOAA NCEI, from 1991-2020 min24 composite files. The archive uses at least 24 reported years; unspecified counts are assumed to be 30. Parameters: TMAX mean daily maximum C, TMIN mean daily minimum C, PRCP precipitation mm, DP01 days with ≥1 mm. Five Portuguese records use IPMA 1991-2020 PDFs, version 1.0 of 2024.
 
-## Climate is not the forecast
+Candidate selection began with a 2016 SMH article, expanded to coastal, highland and seasonal alternatives. Data access shaped coverage. The 90 cities in 23 countries are a curated, uneven sample, not a statistical census. Ecuador and Namibia are absent because comparable verified core station series were not obtained. Five incomplete core records were excluded: Guanajuato, Naples, Catania, Caxias do Sul and Musanze/Ruhengeri. Guatemala candidates remain withheld pending reconciliation of station/value anomalies.
 
-A normal describes a historical average over 30 years. It is not the weather expected on a particular date, the maximum temperature ever reached, or a guarantee against heavy rain. A month averaging a 25 C daily high can include dangerous heat. A dry month can include a damaging storm. Climate change means the 1991-2020 baseline can understate present-day warmth. No 2026 observations, real-time forecasts or future projections are mixed into these tables.
+## Wind and humidity: separately modeled supplement
 
-## What is deliberately not scored
+NASA POWER's custom climatology API returns **January 1991-December 2020**, verified in every response header. RH2M is relative humidity at 2 m (%); WS10M is mean wind speed at 10 m (m/s). Values originate in NASA's **MERRA-2 assimilation/reanalysis model**, not direct station observations. Source resolution is 0.5° latitude by 0.625° longitude, roughly 50 km, with variable east-west width. All 90 candidates have 12 usable months for both parameters in this edition; no values were filled in.
 
-Humidity/dew point, wind, cloud, fog, sunshine, UV, air pollution, sea temperature, flood/fire/cyclone exposure and heat-wave frequency are not available on a consistently verified basis for this candidate set. Missing coverage is not evidence of low risk. WHO notes that heat stress depends on temperature, humidity, air movement and radiant heat; UV risk cannot be inferred from pleasant air temperature. Check all of these before a trip or relocation. Visa rules, safety, housing, healthcare, language and cost of living are outside this climate-only project.
+Requests use the city anchor, not the temperature/rain station. That matters especially near coasts, mountains and airports. The grid can mix ocean, coast, urban and inland terrain. Los Angeles (coast), for example, uses the city anchor for its grid, not a particular coastal neighbourhood. Do not interpret the extra decimal places returned by the API as local accuracy. Sheltered streets, sea breezes, altitude and gusts can differ greatly.
 
-## Reading the display
+## Map locations and boundaries
 
-- "High" means the monthly average of daily maxima, not the day's forecast or a record maximum.
-- "Low" means the monthly average of daily minima, not a minimum you can rely on every night.
-- "Rain" is mean monthly precipitation in mm. 1 mm is 1 litre per square metre.
-- "Rain days" means days with at least 1 mm of precipitation; missing is shown as "not available".
-- Highlighted months pass the chosen rule. A month that does not pass is not necessarily a bad month to visit.
-- "Fit months" is a count of qualifying monthly averages, never a count or percentage of comfortable days.
+City anchors come from GeoNames via Open-Meteo, filtered by country and checked by name and administrative region. Mysuru and Marrakech required corrected search aliases; the first Mysore result was a Bengaluru-area locality and was rejected. Map dots represent cities, **not station coordinates**. Suspect original station geolocation fields (notably Auckland) were not used. Exact query links and returned names are preserved in JSON. Generalized map outlines are Natural Earth public-domain 1:110m countries; boundaries are for orientation, not a territorial claim. The map is equirectangular, with distortion toward the poles. Some small islands are smaller than the map outlines can show, but their city dots remain available.
+
+## Local proxies and excluded measures
+
+Gran Canaria airport is on another coast from Las Palmas; San Francisco airport is south of the city; Fiumicino is not central Rome; Medellin uses Olaya Herrera, not Rionegro. Each record retains its exact station and caveat. The grid supplement does not fix these proxies.
+
+Sunshine, fog, UV, air quality, sea temperature, flood/fire/cyclone exposure and heat-wave frequency remain outside the score. Historical normals are not forecasts; warming can make 1991-2020 cooler than present conditions. This is climate context, not a safety, health or relocation score.
 
 ## Reuse and updates
 
-The CSV and JSON preserve station-level provenance. The source ledger lists the exact data URLs, retrieval date and file hashes. For an update, fetch the current composite files, reselect the same station names and identifiers, preserve the period, compare changes and investigate anomalies before publishing. Do not mix all-years Bureau of Meteorology averages with fixed-period WMO normals without relabelling them. Data rights remain with the original publishers; no source photographs or article text are republished.
+The page embeds its data and map outlines and works offline. CSV/JSON preserve all inputs and exact source URLs. `enrich.py` fetches coordinate and NASA supplement responses, verifies period and units, caches source bytes, and leaves gaps explicit on failure. Review every changed coordinate match before publication; cached responses should be removed deliberately for refresh. `check_data.py` audits the committed inputs and CSV. Temperature/rain updates still require the exact source station and period, comparison to prior values and investigation of anomalies. Do not mix changing default POWER periods or all-years station averages with 1991-2020.
