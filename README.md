@@ -6,7 +6,9 @@ A city-first climate atlas for people planning a trip or considering a move. Com
 
 ## Start here
 
-Open the rendered atlas from this repository's GitHub Pages link (shown under About / Deployments once deployment is ready). If Pages is unavailable, download [index.html](index.html) and open it in any modern browser. It is self-contained: no dependencies, tracking, accounts or network requests needed for the comparisons.
+**[Open the live climate atlas](https://vb-instinct.github.io/best-weather-cities/)**
+
+If Pages is unavailable, download [index.html](index.html) and open it in any modern browser. It is self-contained: no dependencies, tracking, accounts or network requests needed for the comparisons.
 
 1. Choose a country.
 2. Choose your travel month, or compare the whole year.
