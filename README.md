@@ -1,54 +1,38 @@
 # Good weather, city by city
 
-A city-first climate atlas for people planning a trip or considering a move. Compare **cities within each country**, choose a weather preference and inspect the monthly data behind the shortlist.
+**[Open the interactive map atlas](https://vb-instinct.github.io/best-weather-cities/)**
 
-**90 city/station candidates · 23 countries · 1991-2020 climate normals · research checked 13 October 2026.**
+90 cities in 23 countries. Map edition checked 14 October 2026. All climate inputs cover 1991-2020.
 
-## Start here
+## Start with the map
 
-**[Open the live climate atlas](https://vb-instinct.github.io/best-weather-cities/)**
+Choose a country or search a city, then tap a colored dot. See monthly temperature, rain, mean wind and relative humidity together. Drag to pan, use + / − to zoom, or choose "Fit cities". Choose one travel month or compare the year. Open monthly values and source links from each city.
 
-If Pages is unavailable, download [index.html](index.html) and open it in any modern browser. It is self-contained: no dependencies, tracking, accounts or network requests needed for the comparisons.
+The default preference is daytime monthly average highs **18-28 C**, light mean wind **≤3 m/s**, lower relative humidity **≤60%** and moderate rainfall **20-100 mm/month**. Adjust wind, humidity and rain under "Adjust the comfort rule". You can require both monthly average lows and highs to be 18-28 C instead. Legacy mild+drier, mild-temperature and warmer modes remain.
 
-1. Choose a country.
-2. Choose your travel month, or compare the whole year.
-3. Switch between **mild + drier**, **mild temperature** and **warmer** preferences.
-4. Open a city's monthly values. Read its station caveat before treating the data as the weather in your neighbourhood.
+**Year-round fit means all 12 months pass every selected limit.** A high average score is not the same thing. The cutoffs and score weights are editable/editorial preferences, not scientific or medical limits. No wind is not realistic as a year-round promise.
 
-## The short answer
+## Know what the numbers represent
 
-Coastal San Diego and Los Angeles, Funchal, Agadir and Essaouira are useful long-season starting points in this candidate set. But there is no universal winner. Pereira and Coffs Harbour have mild monthly temperature averages and substantial rain. Mediterranean cities often suit spring or autumn better than the peak summer. Highland towns can be cool but wet.
+Temperature/rain are station normals from national-service WMO submissions hosted by NOAA NCEI (85 records) and IPMA PDFs (five Portuguese records). Wind/humidity are **NASA POWER / MERRA-2 model-derived grid climatologies**, not station readings. The period is custom 1991-2020, checked in every NASA response.
 
-The atlas ranks candidates **within countries**, never whole countries against each other. It also explains why changing your rain or temperature preference changes the answer.
+The model grid is roughly 50 km across. Coastal, mountain, airport and neighbourhood weather can differ. City map anchors are separately checked GeoNames locations via Open-Meteo, not station coordinates. Both sources and spatial caveats stay visible. Every candidate has complete wind/humidity arrays in this edition; future gaps are displayed, never filled as zero.
 
-## What a rank does and does not mean
+This is a curated shortlist, not every city or country. Ranks compare candidates within each country's included shortlist. Sunshine, fog, UV, air quality and extreme-event risks are not scored. Climate is not a forecast, safety assessment or relocation recommendation.
 
-The default rule counts months with average daily highs of 18-28 C, lows of 8-20 C and monthly precipitation at most 100 mm. These are editorial preferences, not scientific comfort limits. A fit month is a monthly historical average, not a promise of comfortable weather every day.
+## Files and audit trail
 
-This is a curated shortlist, not every city in the world or in each country. A missing city is not a negative verdict. Ranks do not include humidity, wind, fog, sunshine, UV, air quality, sea temperature, extreme-event risk, housing, visas, healthcare, safety or living costs.
-
-## Evidence and reuse
-
-| File | What it is for |
+| File | Purpose |
 | --- | --- |
-| [index.html](index.html) | Interactive, mobile-first atlas. Country, month and preference controls; full monthly values and source links. |
-| [METHODOLOGY.md](METHODOLOGY.md) | Thresholds, tie-breaks, sampling limits, station proxies, exclusions and update process. |
-| [SOURCES.md](SOURCES.md) | Exact sources, claims used, retrieval date and source-file hashes. |
-| [cities-monthly.csv](cities-monthly.csv) | 1,080 station-month records, labelled in C and mm, with station IDs and source-family keys (exact links in JSON and source ledger). |
-| [cities.json](cities.json) | Structured city records and all monthly arrays used by the page. |
-| [check_data.py](check_data.py) | Re-run the data audit locally with Python 3; no network or dependencies. |
-| [QUALITY.md](QUALITY.md) | Data and interface checks, remaining limitations and upgrade priorities. |
+| [index.html](index.html) | Self-contained clickable, zoomable map, filters, score controls, city details and monthly values. Works offline after download; no keys, scripts, tracking or runtime API requests. |
+| [cities.json](cities.json) | All station and model arrays, city anchors, exact source URLs and NASA response hashes. |
+| [cities-monthly.csv](cities-monthly.csv) | 1,080 rows, including model wind/humidity, coordinates, periods and source links. |
+| [METHODOLOGY.md](METHODOLOGY.md) | Exact fit rules, score formula, missing-data policy, spatial caveats and updates. |
+| [SOURCES.md](SOURCES.md) | Primary sources, retrieval dates and hashes. |
+| [QUALITY.md](QUALITY.md) | Checks and remaining limits. |
+| [check_data.py](check_data.py) | Dependency-free offline data audit. |
+| [enrich.py](enrich.py) | Re-fetch coordinates and the explicit-period NASA supplement. Review every changed location before publishing. |
 
-Most numbers come from national meteorological-service submissions to the WMO, hosted by NOAA NCEI. Portugal uses IPMA station PDFs. The same **1991-2020** baseline is kept throughout. The supplied [SMH Traveller article](https://www.smh.com.au/traveller/reviews-and-advice/the-worlds-greatest-climates-top-cities-to-visit-for-perfect-weather-all-year-round-20161104-gshzcu.html) inspired the question; its historic rankings and values were not reused as current data.
+Countries: Argentina, Australia, Brazil, Chile, China, Colombia, Cyprus, France, India, Italy, Japan, Mexico, Morocco, New Zealand, Portugal, Rwanda, South Africa, Spain, Tunisia, Turkiye, United Kingdom, United States, Uruguay. Sample sizes vary; Italy and the UK have only two candidates each. Ecuador and Namibia remain unranked for missing verified core data.
 
-## Countries in this edition
-
-Argentina, Australia, Brazil, Chile, China, Colombia, Cyprus, France, India, Italy, Japan, Mexico, Morocco, New Zealand, Portugal, Rwanda, South Africa, Spain, Tunisia, Türkiye, United Kingdom, United States and Uruguay.
-
-The samples vary in size. Italy and the UK have only two cities each, so their ranking is particularly limited. Ecuador and Namibia are not ranked despite appearing in the inspiration article: comparable verified station data were not obtained in this run.
-
-## Before using this to make a decision
-
-Climate normals are historical averages, not forecasts or present-day guarantees. For travel, check current forecasts and official warnings before booking. For relocation, test the actual neighbourhood in the least comfortable season and research the non-climate factors separately.
-
-No personal data, credentials or source article text are included. Original data rights remain with their publishers. This project is climate context, not a relocation or safety recommendation.
+No personal data, credentials or copied article text are included. Natural Earth map outlines are public domain. Location data: GeoNames via Open-Meteo. Original climate data rights remain with their publishers. The SMH Traveller article inspired the first shortlist, not current rankings.
