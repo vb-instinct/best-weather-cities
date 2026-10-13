@@ -1,38 +1,26 @@
 # Quality checks and remaining limits
 
-## Data checks
+Map edition, 14 October 2026.
 
-- All 90 records have twelve monthly highs, lows and precipitation values.
-- Every high is at least its corresponding low; precipitation is non-negative.
-- The 1,080 CSV rows match the JSON high and precipitation arrays exactly.
-- Missing source values are not imputed or turned into zeros.
-- All records use the same 1991-2020 period. Portuguese PDFs identify version 1.0 of 2024.
-- WMO composite rows are matched by country and exact original station name, not by fuzzy city-name similarity.
-- Station names, station IDs and source parameter URLs are retained.
-- Annual rain shown in the page is the sum of rounded monthly values, explicitly labelled. It can differ slightly from a source annual value.
-- Five incomplete candidate records were excluded. Guatemala candidates were withheld for unresolved station/value anomalies, not silently repaired.
-- Some source coordinates looked suspect. Coordinates are not used or published; no map or distance inference is made.
+## Data
 
-## Interface checks
+- 90 cities, 23 countries, twelve station high/low/rain values each; 1,080 CSV rows.
+- CSV station and supplemental fields checked against JSON with `python3 check_data.py`.
+- All 90 NASA responses confirm custom January 1991-December 2020 and units RH2M %, WS10M m/s. No missing wind/humidity values in this edition.
+- Every city anchor checked against returned country, settled-place type, name and administrative region. Rejected a "Mysore Road Tolgate" match near Bengaluru and fetched Mysuru; Marrakech required Marrakesh spelling. Original suspect station coordinates not used.
+- Exact query URLs and NASA response hashes preserved. No model values claimed as station observations.
+- Missing future values produce an unavailable comfort score, never zero or calm. City details say "not available"; legacy rules can still compare core temperature/rain.
+- Wind is mean at 10 m, not gusts or an assurance of no wind. Humidity is relative humidity at 2 m, not dew point.
+- Station and modeled grid samples are geographically distinct, with limitations beside details and in methodology.
 
-- The page was rendered at 320, 390 and 1280 pixels.
-- Long city and station labels, month chips, units and caveats wrap inside the mobile width.
-- Country filter, city search, month selection, all preference buttons, reset and empty-state behaviour were exercised.
-- Monthly disclosures contain the actual data; charts use the same -5 to 40 C scale for every city and exact values are printed below.
-- Every city record remains in the HTML even without JavaScript; source links and downloadable CSV/JSON remain available. Dynamic fit summaries require JavaScript.
-- No external scripts, stylesheets, fonts, tracking or runtime API requests. The page works offline once downloaded.
+## Interface
 
-## Limits that matter
+The map is compiled from Natural Earth outlines and embedded data, with no keys, runtime tile services, tracking or external libraries. Map dots are city anchors. The original monthly cards retain accessible source links and a no-JavaScript station-data fallback; map controls and dynamic scores require JavaScript.
 
-The candidate sample is curated and uneven; ranks mean best among included cities, not national champions. Monthly averages cannot establish daily comfort, humidity, wind, fog, sunshine, UV, air pollution, sea temperature or hazard exposure. Stations are local proxies, especially at airports. Climate change can make historical normals cooler than present-day conditions.
+Checks include desktop/mobile layout, city click details, country filter, monthly recoloring, preference switches, adjusted comfort limits, zoom, fit-to-country and reset. The whole-year score is not presented as year-round qualification; all 12 months must pass. See the task's visual evidence for the final live checks.
 
-## Upgrade priorities
+## Remaining limits
 
-1. Reconcile the Guatemala anomalies with the national meteorological service before adding its cities.
-2. Obtain direct Las Palmas city and central Rome normals instead of relying on coastal airport proxies.
-3. Add Ecuador and Namibia using verified comparable station normals.
-4. Expand thin country samples, especially Italy and the United Kingdom.
-5. Add independently sourced humidity/dew point, wind, sunshine and extreme-event indicators. Do not blend them into an unexplained score.
-6. Add neighbourhood/station context and hazard guidance without pretending this is a safety or relocation ranking.
+The city shortlist is curated and uneven. Monthly historical averages cannot count comfortable days or show extremes. Model grid cells (0.5° × 0.625°) can combine sea, urban, coast, hills and inland conditions. Local sheltered areas and neighbourhoods can differ sharply. Temperature/rain stations remain proxies, notably Gran Canaria, San Francisco and coastal Rome. The equirectangular map distorts toward the poles; small islands can be below its outline resolution. Generalized boundaries are orientation, not territorial claims.
 
-These are improvement priorities, not scheduled promises. Corrections should identify the exact station, month, source and baseline period so the evidence can be checked.
+UV, sunshine, fog, air quality, sea temperature, flood/fire/storm exposure and climate-change projections remain outside the score. Gaps in those measures do not mean low risk. This is not an exhaustive world ranking, health guidance or a relocation recommendation.
