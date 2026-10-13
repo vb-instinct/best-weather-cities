@@ -34,6 +34,7 @@ This is a curated shortlist, not every city in the world or in each country. A m
 | [SOURCES.md](SOURCES.md) | Exact sources, claims used, retrieval date and source-file hashes. |
 | [cities-monthly.csv](cities-monthly.csv) | 1,080 station-month records, labelled in C and mm, with station IDs and source-family keys (exact links in JSON and source ledger). |
 | [cities.json](cities.json) | Structured city records and all monthly arrays used by the page. |
+| [check_data.py](check_data.py) | Re-run the data audit locally with Python 3; no network or dependencies. |
 | [QUALITY.md](QUALITY.md) | Data and interface checks, remaining limitations and upgrade priorities. |
 
 Most numbers come from national meteorological-service submissions to the WMO, hosted by NOAA NCEI. Portugal uses IPMA station PDFs. The same **1991-2020** baseline is kept throughout. The supplied [SMH Traveller article](https://www.smh.com.au/traveller/reviews-and-advice/the-worlds-greatest-climates-top-cities-to-visit-for-perfect-weather-all-year-round-20161104-gshzcu.html) inspired the question; its historic rankings and values were not reused as current data.
